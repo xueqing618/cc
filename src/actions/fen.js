@@ -1,8 +1,10 @@
 import {post} from '../untils/request'
+import api from '../services/api' 
+console.log(api.list)
 export function getname(option){
-  console.log(option)
+ 
   return {
     type:"HOME_NAME",
-    payload:post("https://blogs.zdldove.top/Home/Apis/listWithPage",option)
+    payload:post(api.list,option)
   }
 }

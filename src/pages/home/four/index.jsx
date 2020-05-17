@@ -1,21 +1,25 @@
 import React, { Component } from 'react'
-import axios from 'axios'
-
+import {connect} from 'react-redux'
+import {getname} from '../../../actions/fen'
 import { Pagination } from 'antd';
-export default class index extends Component {
-  state={
-    data:[]
-  }
+export default @connect(({ fen }) => ({
+   data: fen.data,
+   count: fen.count
+}), {
+  getname
+})
 
-  componentDidMount(){
-    axios.get('https://blogs.zdldove.top/Home/Apis/listWithPage').then(res=>{
-        this.setState({
-          data:res.data.result.list
-        })
-    })  
-  }
+class index extends Component {
+  
+   componentDidMount () {
+     this.props.getname({page:1})
+     
+   }
+  onChange = page => {
+    this.props.getname({page})
+  };
   render() {
-    const {data}=this.state
+    const {data,count}=this.props
     console.log(data)
     return (
       <>
@@ -34,7 +38,9 @@ export default class index extends Component {
         }
       </div>
       <div>
-      <Pagination defaultCurrent={6} total={500} />
+      <Pagination defaultCurrent={Number(1)}
+      onChange={this.onChange}
+      total={Number(count)} />
       </div>
       </>
     )
