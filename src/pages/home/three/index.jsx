@@ -5,9 +5,18 @@ import api from '@/services/api'
 
 export default @Form.create({
   // 表单回填使用
-  mapPropsToFields () {
+  mapPropsToFields (props) {
+    console.log(props)
     return {
-      
+      name:Form.createFormField({
+        value:props.name
+      }),
+      age:Form.createFormField({
+        value:props.age
+      }),
+      msg:Form.createFormField({
+        value:props.msg
+      })
     }
   },
 })
@@ -30,6 +39,7 @@ class index extends Component {
       }
     });
   };
+
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
