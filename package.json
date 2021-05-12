@@ -19,7 +19,7 @@
     "redux": "^4.0.5",
     "redux-promise": "^0.6.0",
     "redux-thunk": "^2.3.0",
-    "swiper": "^5.3.7",
+    "swiper": "^6.5.1",
     "thunk": "0.0.1"
   },
   "scripts": {
